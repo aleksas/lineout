@@ -1,4 +1,4 @@
-![docker workflow](https://github.com/aleksas/lineout/actions/workflows/docker-image.yml/badge.svg)
+[![docker workflow](https://github.com/aleksas/lineout/actions/workflows/docker-image.yml/badge.svg)](https://github.com/aleksas/lineout/actions/)
 
 # Lineout Player
 
