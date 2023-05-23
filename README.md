@@ -11,6 +11,7 @@ The software is built to run on Linux and can be easily containerized for deploy
 - [Running with Docker](#running-with-docker)
 - [Running with Docker Compose](#running-with-docker-compose)
 - [License](#license)
+- [Disclaimer](#disclaimer)
 
 ## Getting Started
 
