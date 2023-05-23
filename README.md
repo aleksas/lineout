@@ -1,74 +1,76 @@
-# Lineout Audio Player
+Here's a `README.md` file for your GitHub repository:
 
-Lineout Audio Player is a simple C++ application that plays audio files from the command line. It leverages the FFmpeg library for reading audio files and the libao library for audio output.
+---
 
-The software is built to run on Linux and can be easily containerized for deployment using Docker. The Docker image created from the provided Dockerfile includes all necessary dependencies for running the audio player.
+# Lineout Player
 
-## Table of Contents
+Lineout Player is an audio player for the command line, built with C++ and utilizing FFmpeg and libao for audio decoding and output. It is meant to be run in an Odroid C4 environment, specifically accessing the `/dev/snd/controlC1` sound device. 
 
-- [Getting Started](#getting-started)
-- [Building and Running](#building-and-running)
-- [Running with Docker](#running-with-docker)
-- [Running with Docker Compose](#running-with-docker-compose)
-- [License](#license)
-- [Disclaimer](#disclaimer)
+Please note that the device path and cgroup rules may differ based on your specific hardware and system configuration.
 
-## Getting Started
+## Prerequisites
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+Ensure that you have the following installed:
 
-### Prerequisites
+- Docker
+- Docker Compose
 
-- C++20 compiler (e.g., g++ or clang++)
-- cmake (version 3.1 or higher)
-- libao (audio output library)
-- FFmpeg (libavformat, libavcodec, libavutil)
+## Build and Run
 
-You can install these dependencies on Ubuntu with:
+### Building the Docker Image
 
-```bash
-sudo apt-get install build-essential cmake libao-dev libavformat-dev libavcodec-dev libavutil-dev
+1. Clone this repository to your local machine.
+
+2. Build the Docker image by running:
+
+    ```bash
+    docker-compose build
+    ```
+
+### Running the Lineout Player
+
+1. Ensure your Odroid C4 device is connected and the `/dev/snd/controlC1` sound device is accessible.
+
+2. Run the player using Docker Compose:
+
+    ```bash
+    docker-compose up
+    ```
+
+3. You should hear the Front_Center.wav sound file played through your Odroid device's speakers.
+
+## Code Files
+
+The application code is found in the following files:
+
+- `main.cpp`: The entry point for the application.
+- `AudioPlayer.hpp`: Header file for the AudioPlayer class, which handles audio playback.
+- `AudioPlayer.cpp`: Implementation of the AudioPlayer class.
+
+The project uses a `CMakeLists.txt` file for building the application.
+
+## Configuration Files
+
+The application also uses several configuration files:
+
+- `Dockerfile`: Used for creating the Docker image.
+- `asound.conf`: ALSA sound configuration file.
+- `docker-compose.yml`: Docker Compose file for orchestrating the application.
+
+## Important Note
+
+The Lineout Player is set up for the Odroid C4 device, specifically accessing the `/dev/snd/controlC1` sound device. If you are using a different device, you may need to adjust the `asound.conf` and `docker-compose.yml` files.
+
+For example, the `docker-compose.yml` includes the following device_cgroup_rules, which may need to be adjusted:
+
+```yaml
+device_cgroup_rules:
+  - 'c 116:* rw'
 ```
 
-## Building and Running
+## Contributions
 
-The project uses a CMake build system. After you've installed the prerequisites, you can build and run the program with:
-
-```bash
-mkdir build
-cd build
-cmake ..
-make
-./lineout-player <audiofile>
-```
-
-Replace `<audiofile>` with the path to the audio file you wish to play.
-
-## Running with Docker
-
-You can also run the application using Docker. First, build the Docker image:
-
-```bash
-docker build -t lineout:latest .
-```
-
-Then, run the application:
-
-```bash
-docker run -it --rm lineout lineout-player <audiofile>
-```
-
-Please note that running audio applications inside Docker might require specific device permissions and configurations, due to Docker's isolation from host audio devices.
-
-## Running with Docker Compose
-
-The repository includes a `docker-compose.yml` file for running the application with Docker Compose. To use it, first ensure you have Docker Compose installed. Then, run:
-
-```bash
-docker-compose up
-```
-
-This will build the Docker image (if not built) and run the service. By default, the service will play the file `/usr/share/sounds/alsa/Front_Center.wav`.
+Please submit issues and pull requests for anything you might want to contribute or discuss.
 
 ## License
 
