@@ -1,7 +1,3 @@
-Here's a `README.md` file for your GitHub repository:
-
----
-
 # Lineout Player
 
 Lineout Player is an audio player for the command line, built with C++ and utilizing FFmpeg and libao for audio decoding and output. It is meant to be run in an Odroid C4 environment, specifically accessing the `/dev/snd/controlC1` sound device. 
