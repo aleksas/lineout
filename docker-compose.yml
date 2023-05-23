@@ -7,7 +7,6 @@ services:
       context: .
       dockerfile: Dockerfile
       target: dev
-    network_mode: host
     restart: always
     device_cgroup_rules:
       - 'c 116:* rw'
