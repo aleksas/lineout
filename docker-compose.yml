@@ -11,6 +11,6 @@ services:
     device_cgroup_rules:
       - 'c 116:* rw'
     volumes:
-      - /dev:/dev
+      - /dev/snd:/dev/snd
     command: ["lineout-player", "/usr/share/sounds/alsa/Front_Center.wav"]
 
