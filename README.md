@@ -68,3 +68,7 @@ docker-compose up
 ```
 
 This will build the Docker image (if not built) and run the service. By default, the service will play the file `/usr/share/sounds/alsa/Front_Center.wav`.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
