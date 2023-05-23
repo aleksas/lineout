@@ -72,3 +72,7 @@ This will build the Docker image (if not built) and run the service. By default,
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Disclaimer
+
+This code was generated with the help of Chat GPT 4
